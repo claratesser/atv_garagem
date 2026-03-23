@@ -1,2 +1,2 @@
-from .user import 
-from .categoria import Acessorio
+from .user import User
+from .Acessorio import Acessorio
