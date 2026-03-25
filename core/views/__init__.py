@@ -1,2 +1,3 @@
 from .user import UserRegistrationView, UserViewSet
-from .Acessorio import AcessorioViewSet
+from .acessorio import AcessorioViewSet
+from .cor import CorViewSet

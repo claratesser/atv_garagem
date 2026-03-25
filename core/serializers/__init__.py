@@ -1,2 +1,3 @@
 from .user import UserRegistrationSerializer, UserSerializer
-from .Acessorio import AcessorioSerializer
+from .acessorio import AcessorioSerializer
+from .cor import CorSerializer
