@@ -12,34 +12,42 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from core.views import AcessorioViewSet, CorViewSet, ModeloViewSet, UserRegistrationView, UserViewSet
+from core.views import AcessorioViewSet, CorViewSet, ModeloViewSet, UserRegistrationView, UserViewSet, VeiculoViewSet
 
 router = DefaultRouter()
-router.register(r'acessorio', AcessorioViewSet, basename='acessorio')
-router.register(r'cor', CorViewSet, basename='cores')
-router.register(r'modelo', ModeloViewSet, basename='modelos')
+
+router.register(r'acessorios', AcessorioViewSet, basename='acessorios')
+router.register(r'cores', CorViewSet, basename='cores')
+router.register(r'modelos', ModeloViewSet, basename='modelos')
+router.register(r'veiculos', VeiculoViewSet, basename='veiculos')
 router.register(r'usuarios', UserViewSet, basename='usuarios')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     # OpenAPI 3
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+
     path(
         'api/doc/',
         SpectacularSwaggerView.as_view(url_name='schema'),
         name='swagger-ui',
     ),
+
     path(
         'api/redoc/',
         SpectacularRedocView.as_view(url_name='schema'),
         name='redoc',
     ),
+
     # Autenticação JWT
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+
     # Registro de usuários
     path('api/registro/', UserRegistrationView.as_view(), name='user_registration'),
+
     # API
     path('api/', include(router.urls)),
 ]
